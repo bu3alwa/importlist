@@ -48,7 +48,7 @@ export async function GET() {
     const xpath = 'xpath=//div/tile-dynamic/a/span[1]'
     const titlesLocators = await page.locator(xpath).all()
 
-    let titles: { title: string, year: string, TvdbId?: string }[] = []
+    const titles: { title: string, year: string, TvdbId?: string }[] = []
 
     for (const locator of titlesLocators) {
       const title = await locator.textContent()
@@ -69,7 +69,7 @@ export async function GET() {
     await tvdbApi.login()
 
     for (let i = 0; i < titles.length; i++) {
-      let t = titles[i]
+      const t = titles[i]
 
       if (!t) throw "Array bounds incorrect"
 
