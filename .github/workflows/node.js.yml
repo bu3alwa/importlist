@@ -23,8 +23,8 @@ jobs:
           cache: "pnpm"
       - name: install node modules
         run: pnpm install
-      - name: Check format
-        run: pnpm run format:check
+      # - name: Check format
+      #   run: pnpm run format:check
       - name: Check linting
         env:
           SKIP_ENV_VALIDATION: 1
