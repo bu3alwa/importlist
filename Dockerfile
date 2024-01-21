@@ -30,9 +30,10 @@ ENV SKIP_ENV_VALIDATION 1
 
 RUN npm run build
 
-FROM node:${NODE_VERSION}-alpine AS runner
-WORKDIR /app
+# FROM node:${NODE_VERSION}-alpine AS runner
+# WORKDIR /app
 
+ENV SKIP_ENV_VALIDATION 0
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV production
 ENV DOCKER 'true'
@@ -40,8 +41,8 @@ ENV DOCKER 'true'
 EXPOSE 3000
 
 #COPY --from=builder  /app/.next/standalone ./
-COPY --from=builder  /app/ ./
-COPY --from=builder /config/ /config/
+# COPY --from=builder  /app/ ./
+# COPY --from=builder /config/ /config/
 
 ENV PORT 3000
 # set hostname to localhost
