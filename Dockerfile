@@ -12,7 +12,7 @@ COPY package.json ./
 RUN curl -L https://unpkg.com/@pnpm/self-installer | node
 
 RUN echo 'node-linker=hoisted' > .npmrc
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm i --frozen-lockfile; 
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm i --frozen-lockfile;
 
 FROM deps AS builder
 WORKDIR /app
@@ -22,8 +22,8 @@ RUN echo 'node-linker=hoisted' > .npmrc
 COPY --from=deps /app/node_modules ./node_modules
 
 ENV DOCKER 'true'
-RUN mkdir /config 
-RUN pnpm run db:prepare
+RUN mkdir /config
+#RUN pnpm run db:prepare
 
 # Don't validate env when building
 ENV SKIP_ENV_VALIDATION 1
@@ -50,3 +50,4 @@ ENV HOSTNAME "0.0.0.0"
 # Some bug with nextjs for now use next start
 #CMD ["node", "server.js"]
 CMD ["npx", "next", "start"]
+
