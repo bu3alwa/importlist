@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "postinstall": "pnpx playwright install",
+    "postinstall": "pnpx playwright install --with-deps && pnpx playwright install-deps",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

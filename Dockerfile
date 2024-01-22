@@ -5,7 +5,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 WORKDIR /app
 
-RUN apk add --no-cache libc6-compat curl
+#apk add --no-cache libc6-compat curl
 
 COPY pnpm-lock.yaml* ./
 COPY package.json ./
@@ -22,6 +22,7 @@ RUN echo 'node-linker=hoisted' > .npmrc
 COPY --from=deps /app/node_modules ./node_modules
 
 ENV DOCKER 'true'
+
 RUN mkdir /config
 #RUN pnpm run db:prepare
 
